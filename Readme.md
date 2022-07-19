@@ -1,5 +1,5 @@
 # How to use
-Füge als erstes eine Datei names `messages.json` mit diesem Inhalt: `[]`, zum Rootverzeichnis hinzu.  
+Füge als erstes eine Datei names `messages.json` mit diesem Inhalt: ```[]```, zum Rootverzeichnis hinzu.  
 Führe dann `npm i` aus, um alles benötigte zu installieren.  
 Um den Server zu starten, musst du noch `npm start` ausführen.  
 
