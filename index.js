@@ -22,18 +22,18 @@ let connectionList = []
 server.on("connection", function(id) {
     connectionList.push(id)
 
-    let mess = ""
-
-    for(i = 0; i < messages.length; i++) {
-        if (i < messages.length - 1) {
-            mess += messages[i] + "<br>"
-        } else {
-            mess += messages[i]
+    
+    if (messages.length > 0) {
+        let mess = ""
+        for(i = 0; i < messages.length; i++) {
+            if (i < messages.length - 1) {
+                mess += messages[i] + "<br>"
+            } else {
+                mess += messages[i]
+            }
         }
+        server.sendMessage("one", mess, id)
     }
-
-
-    server.sendMessage("one", mess, id)
 })
 
 server.on("message", function(data, id) {
