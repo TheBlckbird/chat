@@ -17,7 +17,7 @@
     </wrapper>
     
     <script>
-        const socket = new WebSocket('ws://192.168.178.50:9000');
+        const socket = new WebSocket('ws://localhost:9000');
 
         socket.addEventListener('message', function (event) {
             document.getElementsByClassName('chat')[0].innerHTML += event.data + '<br>';
