@@ -46,8 +46,10 @@ server.on("message", function(data, id) {
             console.error(err)
         }
     })
-
-    server.sendMessage(str)
+     if (mes.opcode == 130) {
+         var packagedMessage = server.packageMessage(mes.opcode, mes.message);
+         server.sendMessage(packagedMessage);
+     }
 })
 
 server.on("closedconnection", function(id) {
