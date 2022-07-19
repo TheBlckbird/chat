@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatversuch</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+    <wrapper>
+        <div class="chat"></div>
+        <div class="inputs">
+            <input autofocus type="text" class="message" placeholder="Nachricht eingeben">
+            <button onclick="sendMessage()" class="send">Senden</button>
+        </div>
+    </wrapper>
+    
+    <script>
+        const socket = new WebSocket('ws://192.168.178.50:9000');
+
+        socket.addEventListener('message', function (event) {
+            document.getElementsByClassName('chat')[0].innerHTML += event.data + '<br>';
+        });
+
+        document.getElementsByClassName('message')[0].addEventListener('keyup', function (event) {
+            if (event.keyCode === 13) {
+                sendMessage();
+            }
+        });
+
+        function sendMessage() {
+            var message = document.getElementsByClassName('message')[0].value;
+            if (message.trim() != '') {
+                socket.send(message);
+                document.getElementsByClassName('message')[0].value = '';
+            }}
+    </script>
+</body>
+</html>
